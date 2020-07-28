@@ -1,0 +1,42 @@
+{
+	"manifest_version": 2,
+	"name": "crawler-xpath",
+	"version": "1.0.0",
+	"description": "获取xpath",
+	"icons":
+	{
+		"16": "img/icon.png",
+		"48": "img/icon.png",
+		"128": "img/icon.png"
+	},
+	"background":
+	{
+		"scripts": ["js/background.js"]
+	},
+	"browser_action": 
+	{
+		"default_icon": "img/icon.png",
+		"default_title": "获取xpath",
+		"default_popup": "popup.html"
+	},
+	"content_scripts": 
+	[
+		{
+			"matches": ["<all_urls>"],
+			"js": ["content-script.js"],
+			"run_at": "document_end"
+		}
+	],
+	// 权限申请
+	"permissions":
+	[
+		"contextMenus", // 右键菜单
+		"tabs", // 标签
+		"notifications", // 通知
+		"webRequest", // web请求
+		"webRequestBlocking",
+		"storage", // 插件本地存储
+		"http://*/*", // 可以通过executeScript或者insertCSS访问的网站
+		"https://*/*" // 可以通过executeScript或者insertCSS访问的网站
+	]
+}
